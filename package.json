@@ -1,0 +1,28 @@
+{
+  "name": "omniroute-onboard",
+  "version": "0.1.0",
+  "description": "Guided setup that connects official free-tier AI API keys to your local OmniRoute.",
+  "license": "MIT",
+  "private": true,
+  "main": "dist/main.js",
+  "scripts": {
+    "build": "node scripts/build.mjs",
+    "prepare:omniroute": "node scripts/prepare-omniroute.mjs",
+    "start": "npm run build && node scripts/prepare-omniroute.mjs --if-missing && electron .",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:e2e": "npm run build && playwright test"
+  },
+  "dependencies": {
+    "node-machine-id": "1.1.12"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.63.0",
+    "@types/node": "24.19.2",
+    "@vercel/nft": "1.11.0",
+    "electron": "43.7.7",
+    "esbuild": "0.28.2",
+    "typescript": "7.0.2",
+    "vitest": "5.0.3"
+  }
+}

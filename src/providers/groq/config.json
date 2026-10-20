@@ -1,0 +1,26 @@
+{
+  "id": "groq",
+  "omnirouteId": "groq",
+  "displayName": "Groq",
+  "kind": "browser",
+  "steps": ["OPEN_SIGNUP", "CREATE_AND_CAPTURE", "VALIDATE", "REGISTER"],
+  "guidedSteps": ["OPEN_SIGNUP", "WAIT_USER_AUTH", "GOTO_KEYS", "CONFIRM_CREATE", "CREATE_AND_CAPTURE", "VALIDATE", "REGISTER"],
+  "urls": {
+    "signup": "https://console.groq.com/login",
+    "keys": "https://console.groq.com/keys"
+  },
+  "validate": { "url": "https://api.groq.com/openai/v1/models" },
+  "keyPattern": "gsk_[A-Za-z0-9]{20,}",
+  "freeModels": {
+    "priority": 1,
+    "static": ["openai/gpt-oss-120b", "openai/gpt-oss-20b", "qwen/qwen3.8-27b", "qwen/qwen3.6-27b"]
+  },
+  "guided": {
+    "loggedInUrl": "^https://console\\.groq\\.com/",
+    "loggedOutUrl": "^https://console\\.groq\\.com/(login|signup|auth)",
+    "createButton": { "selector": "button, a", "text": ["Create API Key", "Create API key"] },
+    "nameInput": { "selector": "[role=dialog] input[type=text], [role=dialog] input:not([type]), dialog input" },
+    "submitButton": { "selector": "[role=dialog] button, dialog button", "text": ["Submit", "Create", "Create API Key"] },
+    "timeouts": { "authMs": 900000, "elementMs": 20000, "keyMs": 20000 }
+  }
+}
